@@ -31,3 +31,7 @@ print("""\033[0;37m
     ⠄⠄⠄⠄⠄⠂⠄⠄⠕⠈⡂⡀⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠄⠈⠄⠄⠂⠄""")
 
 time.sleep(3)
+import os
+
+hostname = os.uname()[1]
+print("Hostname:", hostname)
