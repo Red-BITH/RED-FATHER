@@ -80,4 +80,5 @@ def get_gce_metadata():
 host_info = get_gce_metadata()
 print("Host:", host_info)
 
+get_gce_metadata()
 
