@@ -64,3 +64,18 @@ print("CPU Info:", cpu_info)
 memory_info = psutil.virtual_memory()
 print("Memory Usage:", f"{memory_info.used / (1024 ** 2):.0f}MiB / {memory_info.total / (1024 ** 2):.0f}MiB")
 
+
+
+import subprocess
+
+def get_dmi_info():
+    try:
+        dmi_info = subprocess.check_output(['sudo', 'dmidecode', '-s', 'system-manufacturer']).strip().decode()
+        return dmi_info
+    except subprocess.CalledProcessError:
+        return "Unknown"
+
+host_info = get_dmi_info()
+print("Host:", host_info)
+
+
