@@ -65,17 +65,19 @@ memory_info = psutil.virtual_memory()
 print("Memory Usage:", f"{memory_info.used / (1024 ** 2):.0f}MiB / {memory_info.total / (1024 ** 2):.0f}MiB")
 
 
+import requests
 
-import subprocess
-
-def get_dmi_info():
+def get_gce_metadata():
     try:
-        dmi_info = subprocess.check_output(['sudo', 'dmidecode', '-s', 'system-manufacturer']).strip().decode()
-        return dmi_info
-    except subprocess.CalledProcessError:
+        response = requests.get('http://metadata.google.internal/computeMetadata/v1/instance/hostname', headers={'Metadata-Flavor': 'Google'})
+        if response.status_code == 200:
+            return "Google Compute Engine"
+        else:
+            return "Unknown"
+    except requests.RequestException:
         return "Unknown"
 
-host_info = get_dmi_info()
+host_info = get_gce_metadata()
 print("Host:", host_info)
 
 
