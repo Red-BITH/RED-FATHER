@@ -1,5 +1,7 @@
 import os
 import requests
+os.system("pip install psutil")
+os.system("clear")
 import time
 print("""\033[0;37m
     ⠄⠄⠄⠄⠄⠄⠄⠄⠄⡀⠄⡀⠄⡀⠄⡀⢀⠄⡀⢀⠄⡀⠄⡀⠄⠄⠄⠄⢀⠄⠄⡀⢀⠄⠄⡀⠄⠄⠄⠄
@@ -81,4 +83,6 @@ host_info = get_gce_metadata()
 print("Host:", host_info)
 
 get_gce_metadata()
+
+
 
